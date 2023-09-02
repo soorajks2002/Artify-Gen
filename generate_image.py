@@ -16,7 +16,6 @@ def generate_image(prompt):
     image_bytes = query({"inputs": prompt})
 
     if image_bytes.status_code == 200 :
-        return Image.open(io.BytesIO(image_bytes.content))
+        return {"image_generated":True, "image":Image.open(io.BytesIO(image_bytes.content))}
 
-    print(image_bytes.content)
-    return Image.open("Default.jpg")
+    return {"image_generated":False}

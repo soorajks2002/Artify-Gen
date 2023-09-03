@@ -1,7 +1,17 @@
 import openai
+import re
 from api_key import open_ai_api_key
 
 openai.api_key = open_ai_api_key
+
+def extract_sentences(input_text):
+    # Split the input text into sentences based on both "\n\n" and "\n"
+    sentences = re.split(r'(\n\n|\n)', input_text)
+    
+    # Remove leading numbers and periods from sentences
+    sentences = [re.sub(r'^\d+\.\s*', '', sentence.strip()) for sentence in sentences if sentence.strip()]
+    
+    return sentences
 
 def generate_prompt (keywords) :
     
@@ -15,5 +25,7 @@ def generate_prompt (keywords) :
                 {"role": "user", "content": prompt.format(keywords=keywords)}
             ]
         )
-
-    return response["choices"][0]["message"]["content"]
+    
+    generated_sentences = response["choices"][0]["message"]["content"]
+    
+    return extract_sentences(generated_sentences)

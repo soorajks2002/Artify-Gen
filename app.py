@@ -7,29 +7,45 @@ from PIL import Image
 favicon = Image.open('favicon.ico')
 st.set_page_config(page_title='Customize Background', page_icon=favicon)
 
-with st.form("main form") : 
+form = st.form("main form")
+prompt_form = st.form("prompt form")
+image_container = st.container()
+
+form_submitted = None
+prompt_form_submitted = None
+
+prompt_list = ["Prompt 1", "Prompt 2", "Prompt 3"]
+
+with form : 
     keywords = st_tags(
         label='### Enter Keywords:',
         text='Press enter to add more',
         maxtags=4)
     
-    if st.form_submit_button("Generate Image Prompt") :
-        
-        if not keywords :
-            st.warning("Please enter keywords")
-        
-        else :
-            with st.spinner("Generating Prompts...") :
-                prompts = generate_prompt(keywords)
-                
+    form_submitted = st.form_submit_button("Generate Image Prompt") 
+
+if form_submitted :        
+    if not keywords :
+        st.warning("Please enter keywords")
+    
+    else :
+        with st.spinner("Generating Prompts...") :
+            prompts = generate_prompt(keywords)
+            
+            with prompt_form :
                 for i,prompt in enumerate(prompts) :
                     st.markdown(f"#### Prompt **{i+1}** ⤵️")
-                    st.markdown(f"#### {prompt}")
+                    st.markdown(f"##### {prompt}")
                     
-            with st.spinner ("Generating Images...") :
-                image_generation_result = generate_image(prompts[0])
+                prompt = st.radio("Select Prompt ..", prompt_list)
+                prompt_form_submitted = st.form_submit_button("Generate Prompt")
                 
-                if image_generation_result["image_generated"] :
-                    st.image(image_generation_result['image'])
-                else :
-                    st.error("Hugging Face Stable Diffusion Model is BUSY !!!")
+if prompt_form_submitted :   
+    with st.spinner ("Generating Images...") :
+        image_generation_result = generate_image(prompt_list.index(prompt))
+        
+        if image_generation_result["image_generated"] :
+            
+            image_container.image(image_generation_result['image'])
+        else :
+            image_container.error("Hugging Face Stable Diffusion Model is BUSY !!!")

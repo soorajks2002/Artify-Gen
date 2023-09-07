@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_tags import st_tags
 from generate_prompt import generate_prompt
-from generate_image_dalle import generate_image
+from generate_image_sd import generate_image
 from PIL import Image
 
 favicon = Image.open('favicon.ico')
@@ -78,8 +78,7 @@ if st.session_state['image_state'] :
         
         if image_gen['image_generated']:
             st.markdown("#### Prompt Used: ")
-            st.markdown(f"##### {prompt}")
+            st.markdown(f"###### {prompt}")
             st.image(image_gen['image'])
-            
         else:
             st.error("Hugging Face's Stable Diffusion Inference API is BUSY !!!")       

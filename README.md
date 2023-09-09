@@ -3,10 +3,10 @@
 
 Unified Text and Image Creative Tool
 
-### Description:
+## Description:
 ArtifyGen is an all-in-one creative powerhouse that seamlessly combines text and image generation capabilities. This innovative tool empowers users to effortlessly create stunning visuals from mere keywords and provides a seamless experience for generating and customizing images.
 
-### Key Features:
+## Key Features:
 
 **1. Keyword-Powered Image Prompts :** Users can input keywords or phrases to describe the content they want to visualize. ArtifyGen transforms these keywords into compelling image prompts.
 
@@ -18,7 +18,7 @@ ArtifyGen is an all-in-one creative powerhouse that seamlessly combines text and
 
 **5. Effortless Image Generation :** After reviewing the three generated prompts, users can select their favorite. ArtifyGen then initiates the image creation process using the chosen AI model, transforming the prompt into a captivating image.
 
-### How It Works:
+## How It Works:
 
 **1. Keyword and Style Selection :** Users input keywords or phrases to describe their desired image content and select an art style from the available options.
 
@@ -30,7 +30,7 @@ ArtifyGen is an all-in-one creative powerhouse that seamlessly combines text and
 
 **5. Image and Text Download :** Users can easily download both the generated image and it's accompanying prompt for use in their creative projects, presentations, or any other applications.
 
-### Benefits:
+## Benefits:
 
 **1. All-in-One Creativity :** ArtifyGen combines text and image generation into one unified tool, allowing users to effortlessly bring their ideas to life with visuals and text.
 
@@ -84,15 +84,13 @@ If you don't have one, create one for [OpenAI](https://platform.openai.com/accou
 #### 5. Start the application
 
 ##### 5.1 Use Stable Diffusion for Image Generation
-#### 
 
 ```bash
   streamlit run app_sd.py
 ```
 
-#### 
+###
 ##### 5.2 Use Dalle for Image generation
-#### 
 
 ```bash
   streamlit run app_dalle.py

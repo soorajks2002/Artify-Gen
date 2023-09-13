@@ -56,7 +56,7 @@ https://github.com/soorajks2002/Artify-Gen/assets/59795959/3b56e21e-ca14-4764-9c
 #### 1. Clone the project
 
 ```bash
-  https://github.com/soorajks2002/Artify-Gen.git
+  git clone https://github.com/soorajks2002/Artify-Gen.git
 ```
 
 #### 2. Go to the project directory
